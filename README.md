@@ -30,6 +30,11 @@ param.
 
 * start server and visit [http://localhost:4000/user_timeline.json](http://localhost:4000/user_timeline.json)
 
+##Testing
+
+		$: cd twitterproxy
+		$: mix deps.get
+		$: mix test
 
 Resources:
 
