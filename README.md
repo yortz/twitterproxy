@@ -23,6 +23,14 @@ param.
 	  	secret: "access_token_secret"
 	  	url: "https://api.twitter.com/oauth"
 
+* fetch twitter user_timeline by setting your screen_name and twitter count
+
+		#web/routers/application_router.ex
+		{ok, headers, json} = Twitterproxy.get_user_timeline "screen_name", 7, consumer, reqinfo
+
+* start server and visit [http://localhost:4000/user_timeline.json]
+
+
 Resources:
 
 * [Elixir website](http://elixir-lang.org/)
