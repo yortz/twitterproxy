@@ -23,7 +23,7 @@ param.
 	  	secret: "access_token_secret"
 	  	url: "https://api.twitter.com/oauth"
 
-* fetch twitter user_timeline by setting your screen_name and twitter count
+* fetch twitter user_timeline by setting your screen_name and tweets count
 
 		#web/routers/application_router.ex
 		{ok, headers, json} = Twitterproxy.get_user_timeline "screen_name", 7, consumer, reqinfo
