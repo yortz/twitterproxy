@@ -1,0 +1,6 @@
+configuration:
+  consumer_key: "123456"
+  consumer_secret: "somesecret"
+  token: "mytoken"
+  secret: "xxxsecret"
+  url: "https://api.twitter.com/oauth"

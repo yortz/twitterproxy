@@ -3,4 +3,4 @@
 /tmp/dev
 /tmp/test
 erl_crash.dump
-configuration.yml
+/configuration.yml
