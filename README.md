@@ -28,7 +28,7 @@ param.
 		#web/routers/application_router.ex
 		{ok, headers, json} = Twitterproxy.get_user_timeline "screen_name", 7, consumer, reqinfo
 
-* start server and visit [http://localhost:4000/user_timeline.json]
+* start server and visit [http://localhost:4000/user_timeline.json](http://localhost:4000/user_timeline.json)
 
 
 Resources:
