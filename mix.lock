@@ -1,0 +1,13 @@
+[ "cowboy": {:git,"https://github.com/extend/cowboy.git","6e33274c852f60eccbdc610b0525c3541d36aa89",[]},
+  "dynamo": {:git,"https://github.com/elixir-lang/dynamo.git","6ec1967071ae25f3a87712095f28dcf9e77be09c",[]},
+  "ex_doc": {:git,"https://github.com/elixir-lang/ex_doc.git","4bc1e9af619fd98e51479cbe09157ff831b0d4e1",[]},
+  "exlager": {:git,"https://github.com/khia/exlager.git","f8dd0715d7668290d7d02a4517acfee4e8be885c",[]},
+  "goldrush": {:git,"git://github.com/DeadZen/goldrush.git","879c69874a555b2c13498aa4a3da6f6bbbb6a031",[tag: "879c69874a"]},
+  "hackney": {:git,"https://github.com/benoitc/hackney.git","6f9b403602371bc3d4aa0b67b1e253b105075bcf",[]},
+  "jsonex": {:git,"https://github.com/marcelog/jsonex.git","746c8492d66e130ee74cb2d857f8458fe3a2c0e2",[tag: "2.0"]},
+  "jsx": {:git,"https://github.com/talentdeficit/jsx.git","cb14b92a228e51f7bdcaa7eb17f035e4a5c0b47d",[tag: "v1.3.3"]},
+  "lager": {:git,"https://github.com/basho/lager.git","316c595e375f4b7126054c368777cfa1ab4970d4",[]},
+  "mimetypes": {:git,"https://github.com/spawngrid/mimetypes.git","e9dfab5aec98963589ecf13bdfcf0490667a730d",[]},
+  "oauth": {:git,"https://github.com/tim/erlang-oauth.git","9035960a0d30a8b3909d9f4d7e9a837aac8a696c",[tag: "v1.3.0"]},
+  "oauthex": {:git,"https://github.com/marcelog/oauthex.git","248e85bec7b78cd4290da17ddcb12e5ecd82ace6",[tag: "0.0.1"]},
+  "ranch": {:git,"git://github.com/extend/ranch.git","935c7c94673027c3940a771c6e8b32f77152f1c9",[ref: "0.8.2"]} ]
