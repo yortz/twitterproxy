@@ -34,7 +34,7 @@ defmodule Twitterproxy do
   Reads the values from the configuration.yml file.
   """
   def read_configuration(yml) do
-    {:ok, contents} = File.read(yml)
+    contents        = File.read!(yml)
     values          = String.strip(String.replace(contents, "configuration:\n", ""))
     values_list     = String.split(values, "\n")
   end
