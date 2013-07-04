@@ -87,10 +87,6 @@ defmodule Twitterproxy do
     list_to_binary(List.delete(rest_list, List.last(rest_list)))
   end
 
-  defp to_json(json) do
-    :jsx.prettify(list_to_binary(json))
-  end
-
   defp bin_to_list(binary) do
     :erlang.binary_to_list(binary)
   end
