@@ -13,7 +13,8 @@ defmodule Twitterproxy.Mixfile do
 
   # Configuration for the OTP application
   def application do
-    [ applications: [:cowboy, :dynamo, :sasl, :exlager, :oauth, :crypto, :ssl, :public_key, :inets],
+    [ applications: [:cowboy, :dynamo, :sasl, :exlager, :oauth, :crypto,
+    :ssl, :public_key, :inets],
       mod: { Twitterproxy, [] } ]
   end
 
@@ -22,7 +23,7 @@ defmodule Twitterproxy.Mixfile do
       { :cowboy, %r(.*), github: "extend/cowboy" },
       { :dynamo, "0.1.0.dev", github: "elixir-lang/dynamo" },
       { :oauthex, "0.0.1", [github: "marcelog/oauthex", tag: "0.0.1"] },
-      { :jsx, "1.3.3", [github: "talentdeficit/jsx", tag: "v1.3.3"] }
+      { :jsex, "0.0.1", github: "talentdeficit/jsex" }
     ]
   end
 end
