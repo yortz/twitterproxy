@@ -22,6 +22,8 @@ param.
 	  	token: "access_token"
 	  	secret: "access_token_secret"
 	  	url: "https://api.twitter.com/oauth"
+      screen_name: "your_twitter_username"
+      count: 5
 
 * fetch twitter user_timeline by setting your screen_name and tweets count
 
