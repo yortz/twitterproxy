@@ -23,7 +23,6 @@ defmodule ApplicationRouterTest do
 
   test "it retrieves values for configuration params" do
     assert Twitterproxy.extract_values(@values) == @values_keys
-    #IO.puts Twitterproxy.extract_values(@values)
   end
 
   test "it sets new configuration from the keyword list" do
@@ -33,6 +32,8 @@ defmodule ApplicationRouterTest do
     assert configuration.token == "mytoken"
     assert configuration.secret == "xxxsecret"
     assert configuration.url == 'https://api.twitter.com/oauth'
+    assert configuration.screen_name == "your_twitter_username"
+    assert configuration.count == 7
   end
 
   test "it creates a consumer" do
@@ -53,16 +54,16 @@ defmodule ApplicationRouterTest do
     #'''
   #end
 
-  #test "it configures with default values from yml file" do
-    #assert is_record(Twitterproxy.configure("configuration.yml"), Twitterproxy.CONFIGURATION) == true
-  #end
+  test "it configures with default values from yml file" do
+    assert is_record(Twitterproxy.configure("configuration.yml"), Twitterproxy.CONFIGURATION) == true
+  end
 
-  #test "gets user timeline" do
-    #configuration = Twitterproxy.configure("configuration.yml")
-    #consumer = Twitterproxy.create_consumer(configuration.consumer_key, configuration.consumer_secret)
-    #reqinfo = Twitterproxy.create_request_info(configuration.token, configuration.secret)
-    #{ok, headers, json} = Twitterproxy.get_user_timeline "yortz_rfc", 2, consumer, reqinfo
-    #assert :jsx.is_json(list_to_binary(json)) == true
-    ###IO.puts Twitterproxy.to_json(json)
-  #end
+  test "gets user timeline" do
+    configuration = Twitterproxy.configure("configuration.yml")
+    consumer = Twitterproxy.create_consumer(configuration.consumer_key, configuration.consumer_secret)
+    reqinfo = Twitterproxy.create_request_info(configuration.token, configuration.secret)
+    {ok, headers, json} = Twitterproxy.get_user_timeline configuration.screen_name, configuration.count, consumer, reqinfo
+    assert :jsx.is_json(list_to_binary(json)) == true
+    #IO.puts Twitterproxy.to_json(json)
+  end
 end

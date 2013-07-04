@@ -6,7 +6,7 @@ defmodule Twitterproxy do
   application and its Dynamos.
   """
 
-  defrecord CONFIGURATION, consumer_key: nil, consumer_secret: nil, token: nil, secret: nil, url: nil
+  defrecord CONFIGURATION, consumer_key: nil, consumer_secret: nil, token: nil, secret: nil, url: nil, screen_name: nil, count: nil
 
   def start(_type, _args) do
     Twitterproxy.Dynamo.start_link([max_restarts: 5, max_seconds: 5])
@@ -52,11 +52,10 @@ defmodule Twitterproxy do
     << "screen_name:", screen_name :: binary >>         = String.strip(Enum.at values_list, 5)
     << "count:", count :: binary >>                     = String.strip(Enum.at values_list, 6)
     [ consumer_key: format(consumer_key), consumer_secret: format(consumer_secret), token: format(token), secret: format(secret), url: binary_to_list(format(url)), screen_name: format(screen_name), count: to_integer(String.strip(count))]
-    
   end
 
   @doc """
-  it creates a new CONFIGURATION record with values 
+  it creates a new CONFIGURATION record with values
   extracted from the configuration keyword list.
   """
   def write_configuration(keyword_list) do
@@ -65,7 +64,9 @@ defmodule Twitterproxy do
     token           = Keyword.get keyword_list, :token
     secret          = Keyword.get keyword_list, :secret
     url             = Keyword.get keyword_list, :url
-    CONFIGURATION.new consumer_key: consumer_key, consumer_secret: consumer_secret, token: token, secret: secret, url: url
+    screen_name     = Keyword.get keyword_list, :screen_name
+    count           = Keyword.get keyword_list, :count
+    CONFIGURATION.new consumer_key: consumer_key, consumer_secret: consumer_secret, token: token, secret: secret, url: url, screen_name: screen_name, count: count
   end
 
   def configure(yml) do

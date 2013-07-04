@@ -12,7 +12,7 @@ defmodule TweetsRouter do
     configuration = Twitterproxy.configure("configuration.yml")
     consumer = Twitterproxy.create_consumer(configuration.consumer_key, configuration.consumer_secret)
     reqinfo = Twitterproxy.create_request_info(configuration.token, configuration.secret)
-    {ok, headers, json} = Twitterproxy.get_user_timeline "yortz_rfc", 7, consumer, reqinfo
+    {ok, headers, json} = Twitterproxy.get_user_timeline configuration.screen_name, configuration.count, consumer, reqinfo
     conn = conn.assign(:json, json)
     render conn.resp_content_type("application/json"), "user_timeline"
   end
