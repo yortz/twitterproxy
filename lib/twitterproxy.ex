@@ -49,7 +49,10 @@ defmodule Twitterproxy do
     << "token:", token :: binary >>                     = String.strip(Enum.at values_list, 2)
     << "secret:", secret :: binary >>                   = String.strip(Enum.at values_list, 3)
     << "url:", url :: binary >>                         = String.strip(Enum.at values_list, 4)
-    [ consumer_key: format(consumer_key), consumer_secret: format(consumer_secret), token: format(token), secret: format(secret), url: binary_to_list(format(url)) ]
+    << "screen_name:", screen_name :: binary >>         = String.strip(Enum.at values_list, 5)
+    << "count:", count :: binary >>                     = String.strip(Enum.at values_list, 6)
+    [ consumer_key: format(consumer_key), consumer_secret: format(consumer_secret), token: format(token), secret: format(secret), url: binary_to_list(format(url)), screen_name: format(screen_name), count: to_integer(String.strip(count))]
+    
   end
 
   @doc """
@@ -72,6 +75,11 @@ defmodule Twitterproxy do
   @doc """
   formats a string by removing the \" char.
   """
+  defp to_integer(string) do
+    {integer, string } = String.to_integer(string)
+    integer
+  end
+
   defp format(value) do
     << 32, 34, rest :: binary >> = value
     rest_list = binary_to_list(rest)

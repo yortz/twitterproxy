@@ -4,3 +4,5 @@ configuration:
   token: "mytoken"
   secret: "xxxsecret"
   url: "https://api.twitter.com/oauth"
+  screen_name: "your_twitter_username"
+  count: 7
