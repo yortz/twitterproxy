@@ -17,4 +17,30 @@ defmodule TweetsRouterTest do
     assert {ok, prettified_json } = JSEX.prettify list_to_binary(data)
     assert JSEX.is_json? prettified_json
   end
+
+  test "get connection params" do
+    screen_name  = "somename"
+    count = 2
+    connection = conn(:GET, "/tweets/user_timeline.json?screen_name=#{screen_name}&count=#{count}")
+    assert connection.fetch(:params).params[:screen_name] == "somename"
+    assert connection.fetch(:params).params[:count] == "2"
+  end
+
+  test "get 400 if no params" do
+    conn(:GET, "/tweets/user_timeline.json").before_send(fn(conn) ->
+      assert conn.status == 400
+    end)
+  end
+
+  test "get 400 if no count" do
+    conn(:GET, "/tweets/user_timeline.json?screen_name=somename").before_send(fn(conn) ->
+      assert conn.status == 400
+    end)
+  end
+
+  test "get 400 if no screen_name" do
+    conn(:GET, "/tweets/user_timeline.json?count=10").before_send(fn(conn) ->
+      assert conn.status == 400
+    end)
+  end
 end
