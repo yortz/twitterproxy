@@ -22,16 +22,12 @@ param.
 	  	token: "access_token"
 	  	secret: "access_token_secret"
 	  	url: "https://api.twitter.com/oauth"
-      screen_name: "your_twitter_username"
-      count: 5
-
-* fetch twitter user_timeline by setting your screen_name and tweets count
-
-		#web/routers/application_router.ex
-		{ok, headers, json} = Twitterproxy.get_user_timeline "screen_name", 7, consumer, reqinfo
 
 * start server and visit
-[http://localhost:4000/tweets/user_timeline.json](http://localhost:4000/tweets/user_timeline.json)
+[http://localhost:4000/tweets/user_timeline.json?screen_name=somename&count=10](http://localhost:4000/tweets/user_timeline.json?screen_name=somename&count=10)
+
+Twitter screen_name and tweet count are both needed and are passed as
+query string params to the path.
 
 ##Testing
 
