@@ -13,8 +13,8 @@ defmodule TweetsRouterTest do
     configuration = Twitterproxy.configure("configuration.yml")
     consumer = Twitterproxy.create_consumer(configuration.consumer_key, configuration.consumer_secret)
     reqinfo = Twitterproxy.create_request_info(configuration.token, configuration.secret)
-    {ok, headers, data} = Twitterproxy.get_user_timeline configuration.screen_name, configuration.count, consumer, reqinfo
-    assert {ok, prettified_json } = JSEX.prettify list_to_binary(data)
+    {_ok, _headers, data} = Twitterproxy.get_user_timeline configuration.screen_name, configuration.count, consumer, reqinfo
+    assert {_ok, prettified_json } = JSEX.prettify list_to_binary(data)
     assert JSEX.is_json? prettified_json
   end
 

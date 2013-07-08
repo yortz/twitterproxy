@@ -13,7 +13,7 @@ defmodule TweetsRouter do
     configuration Twitterproxy.configure("configuration.yml")
     consumer = Twitterproxy.create_consumer(configuration.consumer_key, configuration.consumer_secret)
     reqinfo = Twitterproxy.create_request_info(configuration.token, configuration.secret)
-    {ok, headers, data} = Twitterproxy.get_user_timeline conn.params[:screen_name], get_integer(conn.params[:count]), consumer, reqinfo
+    {_ok, _headers, data} = Twitterproxy.get_user_timeline conn.params[:screen_name], get_integer(conn.params[:count]), consumer, reqinfo
     conn = conn.send_chunked(200)
     conn.chunk(prettified_json(data))
   end
