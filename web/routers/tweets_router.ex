@@ -1,5 +1,7 @@
 defmodule TweetsRouter do
   use Dynamo.Router
+  
+  @configuration Twitterproxy.configure("configuration.yml")
 
   prepare do
     conn.fetch([:cookies, :params])
@@ -9,9 +11,8 @@ defmodule TweetsRouter do
   end
 
   get "/user_timeline.json" do
-    configuration = Twitterproxy.configure("configuration.yml")
-    consumer = Twitterproxy.create_consumer(configuration.consumer_key, configuration.consumer_secret)
-    reqinfo = Twitterproxy.create_request_info(configuration.token, configuration.secret)
+    consumer = Twitterproxy.create_consumer(@configuration.consumer_key, @configuration.consumer_secret)
+    reqinfo = Twitterproxy.create_request_info(@configuration.token, @configuration.secret)
     {ok, headers, data} = Twitterproxy.get_user_timeline conn.params[:screen_name], get_integer(conn.params[:count]), consumer, reqinfo
     conn = conn.send_chunked(200)
     conn.chunk(prettified_json(data))

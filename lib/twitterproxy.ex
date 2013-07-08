@@ -35,7 +35,7 @@ defmodule Twitterproxy do
   """
   def read_configuration(yml) do
     contents        = File.read!(yml)
-    values          = String.strip(String.replace(contents, "configuration:\n", ""))
+    values          = String.replace(contents, "configuration:\n", "") |> String.strip #String.strip(String.replace(contents, "configuration:\n", ""))
     values_list     = String.split(values, "\n")
   end
 
@@ -70,7 +70,8 @@ defmodule Twitterproxy do
   end
 
   def configure(yml) do
-    write_configuration(extract_values(read_configuration(yml)))
+    read_configuration(yml) |> extract_values |> write_configuration
+    #write_configuration(extract_values(read_configuration(yml)))
   end
 
   @doc """
