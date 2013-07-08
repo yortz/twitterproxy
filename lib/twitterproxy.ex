@@ -71,7 +71,6 @@ defmodule Twitterproxy do
 
   def configure(yml) do
     read_configuration(yml) |> extract_values |> write_configuration
-    #write_configuration(extract_values(read_configuration(yml)))
   end
 
   @doc """
