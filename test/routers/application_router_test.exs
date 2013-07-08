@@ -1,7 +1,7 @@
 Code.require_file "../../test_helper.exs", __FILE__
 
 defmodule ApplicationRouterTest do
-  use Twitterproxy.TestCase
+  use Twitterproxy.TestCase, async: true
   use Dynamo.HTTP.Case
 
   # Sometimes it may be convenient to test a specific
